@@ -6,4 +6,4 @@ typedef struct Commande {
     char plat[50];
     float prix;
     char description [70];
-    float temp;
+    float temps;
