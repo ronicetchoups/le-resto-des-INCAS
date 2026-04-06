@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<math.h>
+int a;
 int main(){
-    printf("hello cameroun\n");
-    return 0;
+    typeof(a);
 }
