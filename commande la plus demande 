@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include "commande.h"
+void commandePlusDemandee(Commande* liste) {
+    if (liste == NULL) {
+        printf("Liste vide\n");
+        return;
+    }
+Commande* max = tete;
+    Commande* temp = tete;
+
+    while (temp != NULL) {
+        if (temp->prix > max->prix) {
+            max = temp;
+        }
+        temp = temp->suivant;
+    }
+
+    printf("\nCommande la plus demandee :\n");
+    printf("Nom : %s\n", max->nomPlat);
+    printf("Prix : %.2f\n", max->prix);
+    printf("Description : %s\n", max->description);
+    printf("Temps : %d min\n", max->temps);
+}
+    int main void {
+    return 0;
+}
