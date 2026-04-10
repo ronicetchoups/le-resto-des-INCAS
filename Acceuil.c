@@ -2,6 +2,7 @@
 #include<stdlib.h>
 
 
+
 int x,Table,Command,numCommand,num,te,number;
 char y;
 
@@ -27,7 +28,7 @@ typedef struct{
             nouveau->suivant = tete;
             return nouveau;
         };
-//afficher commande(2. fonction d'affichage de la liste des commandes)
+//(2. fonction d'affichage de la liste des commandes)
     void afficher(Commande* tete){
     while (tete != NULL) {
         if (tete->etat == 0){
@@ -40,7 +41,7 @@ typedef struct{
         tete = tete->suivant;
     }
 }
-//etat de la commande(3. fonction de gestion du statut de la commande)
+//(3. fonction de gestion du statut de la commande)
         void state_command() {
             Commande* liste = NULL;//initialiser la liste des commandes
             int numero, etat;
@@ -76,6 +77,21 @@ void registerCommand(int numCommand,int numTable){
         printf("erreur");
         system("./modo");
     }
+}
+
+//(14.)fonction pour verifier le statut d'une commande
+void state(){
+            printf("Entrez le numero de votre commande : \n");
+            scanf("%d",&numCommand);
+            if(numCommand != 0 && numCommand == number){
+                if(te== 0){
+                    printf("votre commande est deja prete\n");
+                }else{
+                    printf("votre commande n'est pas encore prete\n");
+                }
+            }else{
+                printf("votre commande n'existe pas\n");
+            }
 }
 
 int size = sizeof(plats)/sizeof(plats[0]);//taille du menu
@@ -122,29 +138,34 @@ int main(){
                     //redirection vers le menu de statut de la commande
                     }else{
                         printf("erreur\n");
-                        system("./edo");
+                        system("./modo");
                     }
                 }
             //statut de la commande
             }else if(y=='c'||y=='C'){
-                printf("Entrez le numero de votre commande : \n");//demander le numero de la commande
-                scanf("%d",&numCommand);
-                if(numCommand != 0 && numCommand == number){
-                    if(te== 0){
-                        printf("votre commande est deja prete\n");
-                    }else{
-                        printf("votre commande n'est pas encore prete\n");
-                    }
-                }else{
-                    printf("votre commande n'existe pas\n");
-                }
+                state();//verifier le statut de la commande
+            }else if(y=='d'||y=='D'){
+                printf("Merci d'avoir choisi notre restaurant, nous esperons que vous passerez un bon moment chez nous\n");//message de remerciement pour le client
+                system("./menu");//redirection vers le menu d'accueil
             //exit
             }else{
                 printf("choix inavalide\n");
-                system("./modo");
+                system("./modo");//redirection vers le menu precedent
             }
     //menu administrateur
-    }else{
+    }else if(x==2){
         system("./menu");//redirection vers le menu de l'administrateur
+        printf("\n");
+        printf("La fonctionnalite qui vous permet de changer le statut d'une commande\n");
+        printf("[y/n] : ");//demander le choix de l'administrateur
+        scanf(" %c",&y);
+        if(y=='y'||y=='Y'){
+            state_command();//changer le statut d'une commande
+        }else if(y=='n'||y=='N'){
+            printf("ok...je vous laisse dans votre menu\n");//message de confirmation pour l'administrateur
+            system("./menu");//redirection vers le menu de l'administrateur
+        }
+    }else{
+        printf("choix inavalide\n");
     }
 }
