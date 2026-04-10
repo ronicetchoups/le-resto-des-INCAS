@@ -16,8 +16,6 @@ Commande* max = tete;
     }
 
     printf("\nCommande la plus demandee :\n");
-   
-}
     int main void {
     return 0;
 }
